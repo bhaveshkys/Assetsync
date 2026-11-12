@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AssetSync</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><span id="dot" class="dot off"></span> AssetSync</div>
+    <div class="project" id="project">No project</div>
+  </header>
+
+  <section class="actions">
+    <button id="addBtn" class="primary">+ Watch folder</button>
+    <button id="syncBtn">Sync now</button>
+    <button id="settingsBtn" title="Settings">⚙</button>
+  </section>
+
+  <section id="settings" class="settings hidden">
+    <label>File types (comma separated)
+      <textarea id="extInput" rows="3"></textarea>
+    </label>
+    <label class="row">Safety rescan every
+      <input id="rescanInput" type="number" min="0" step="5"> sec (0 = off)
+    </label>
+    <button id="saveSettings">Save</button>
+  </section>
+
+  <section>
+    <h2>Watched folders</h2>
+    <ul id="folders" class="folders"></ul>
+    <p id="empty" class="muted">No folders yet. Click “Watch folder” and pick your assets folder — new files dropped in will be imported automatically.</p>
+  </section>
+
+  <section class="grow">
+    <h2>Activity <button id="clearLog" class="link">clear</button></h2>
+    <ul id="log" class="log"></ul>
+  </section>
+
+  <script src="js/cep.js"></script>
+  <script src="js/watcher.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
