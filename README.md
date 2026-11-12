@@ -35,33 +35,39 @@ No more switching out of your editor to drag-and-drop or navigate file dialogs �
 
 ## Installation
 
-You can get the installation files directly from the [**Releases**](../../releases) section of this repository.
+You can download either the **`.zxp`** package or the **`.zip`** installer from the [**Releases**](../../releases) section.
 
-### Windows Installation
+### Option A: Install via ZXP (Recommended if you have a ZXP Installer)
 
-1. Download the latest `AssetSync-v1.0.0.zip` from the [**Releases**](../../releases) page.
-2. Extract the downloaded zip file.
-3. Double-click **`install.bat`** (or right-click **`install.ps1`** → *Run with PowerShell*).
-4. Restart Adobe Premiere Pro or After Effects.
-5. In your editor, navigate to:  
-   **Window → Extensions → AssetSync**
-
-> [!NOTE]
-> The installer enables `PlayerDebugMode` in the Windows Registry (allowing unsigned CEP extensions) and installs files to `%APPDATA%\Adobe\CEP\extensions\com.assetsync`. No administrator privileges are required.
+1. Download **`AssetSync-v1.0.0.zxp`** from the [**Releases**](../../releases) section.
+2. Drag and drop the `.zxp` file into any standard extension installer:
+   - [aescripts + aeplugins ZXP Installer](https://aescripts.com/learn/zxp-installer/)
+   - [Anastasiy's Extension Manager](https://install.anastasiy.com/)
+   - [ZXP Installer](https://zxpinstaller.com/)
+3. Restart Premiere Pro or After Effects.
+4. Open **Window → Extensions → AssetSync**.
 
 ---
 
-### macOS Installation
+### Option B: 1-Click Native Installer (No extra software needed)
 
-1. Download the latest `AssetSync-v1.0.0.zip` from the [**Releases**](../../releases) page.
-2. Extract the downloaded zip file.
-3. Double-click **`install.command`** (or open Terminal, `cd` into the extracted folder, and run `./install.sh`).
-4. Restart Adobe Premiere Pro or After Effects.
-5. In your editor, navigate to:  
-   **Window → Extensions → AssetSync**
+Download **`AssetSync-v1.0.0.zip`** from the [**Releases**](../../releases) section and unzip it.
+
+#### 🪟 Windows:
+1. Double-click **`install.bat`** (or right-click **`install.ps1`** → *Run with PowerShell*).
+2. Restart Premiere Pro or After Effects.
+3. Open **Window → Extensions → AssetSync**.
 
 > [!NOTE]
-> The installer enables `PlayerDebugMode` via `defaults write` and installs files to `~/Library/Application Support/Adobe/CEP/extensions/com.assetsync`.
+> The script configures `PlayerDebugMode` in your user registry (`HKCU\Software\Adobe\CSXS`) and installs to `%APPDATA%\Adobe\CEP\extensions\com.assetsync`. No administrator privileges are required.
+
+#### 🍎 macOS:
+1. Double-click **`install.command`** (or run `./install.sh` in Terminal).
+2. Restart Premiere Pro or After Effects.
+3. Open **Window → Extensions → AssetSync**.
+
+> [!NOTE]
+> The script configures `PlayerDebugMode` via `defaults write` and installs to `~/Library/Application Support/Adobe/CEP/extensions/com.assetsync`.
 
 ---
 

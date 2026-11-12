@@ -1,5 +1,5 @@
 #!/bin/bash
-# Builds a clean release zip ready for GitHub Releases
+# Builds both a signed .zxp and a 1-click installer .zip ready for GitHub Releases
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -9,9 +9,20 @@ VERSION=${VERSION:-"1.0.0"}
 DIST_DIR="$DIR/dist"
 STAGE_DIR="$DIST_DIR/AssetSync-v$VERSION"
 ZIP_NAME="AssetSync-v$VERSION.zip"
+ZXP_NAME="AssetSync-v$VERSION.zxp"
 
-echo "Building release package for AssetSync v$VERSION..."
+echo "========================================================"
+echo "          Building AssetSync Release v$VERSION"
+echo "========================================================"
+echo ""
 
+# 1. Build .zxp
+echo "[1/2] Building and signing $ZXP_NAME..."
+node "$DIR/scripts/build-zxp.js"
+echo ""
+
+# 2. Build .zip with 1-click installers
+echo "[2/2] Packaging $ZIP_NAME..."
 rm -rf "$STAGE_DIR" "$DIST_DIR/$ZIP_NAME"
 mkdir -p "$STAGE_DIR"
 
@@ -32,16 +43,16 @@ cp "$DIR/uninstall.command" "$STAGE_DIR/"
 cp "$DIR/README.md" "$STAGE_DIR/"
 cp "$DIR/LICENSE" "$STAGE_DIR/"
 
-# Ensure scripts are executable
 chmod +x "$STAGE_DIR"/*.sh "$STAGE_DIR"/*.command 2>/dev/null || true
-
-# Remove any accidental .DS_Store
 find "$STAGE_DIR" -name ".DS_Store" -delete
 
-# Create ZIP
 cd "$DIST_DIR"
 zip -r -q "$ZIP_NAME" "AssetSync-v$VERSION"
 rm -rf "$STAGE_DIR"
 
-echo "Done! Release zip created at: $DIST_DIR/$ZIP_NAME"
-
+echo ""
+echo "========================================================"
+echo "  Build Complete! Artifacts ready in $DIST_DIR:"
+echo "  1. $ZXP_NAME (for aescripts / Anastasiy / ZXP Installer)"
+echo "  2. $ZIP_NAME (with 1-click install.bat & install.command)"
+echo "========================================================"
